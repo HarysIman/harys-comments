@@ -9,6 +9,7 @@ proxy:
   ssl: true
   hosts:
     - api.harys.space
+  app_port: 3000
 
 registry:
   server: ghcr.io
