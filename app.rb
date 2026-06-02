@@ -2,6 +2,10 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
+set :environment, :production
+set :bind, '0.0.0.0'
+set :port, 3000
+
 DB_PATH = ENV.fetch('DB_PATH', '/data/comments.db')
 
 def db
@@ -49,6 +53,10 @@ post '/comments' do
   db.execute('INSERT INTO comments (name, message) VALUES (?, ?)', [name, message])
   status 201
   { ok: true }.to_json
+end
+
+get '/up' do
+  { status: 'ok' }.to_json
 end
 
 get '/health' do
