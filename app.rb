@@ -29,7 +29,9 @@ before do
     'Access-Control-Allow-Headers' => 'Content-Type'
 end
 
-options '*' { 200 }
+options '*' do
+  200
+end
 
 get '/comments' do
   db.execute('SELECT * FROM comments ORDER BY created_at ASC').to_json
