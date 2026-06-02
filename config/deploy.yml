@@ -1,0 +1,26 @@
+service: harys-comments
+image: harysiman/harys-comments
+
+servers:
+  web:
+    - 202.74.75.35
+
+proxy:
+  ssl: true
+  hosts:
+    - api.harys.space
+
+registry:
+  server: ghcr.io
+  username: HarysIman
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+ssh:
+  user: ubuntu
+
+volumes:
+  - harys_comments_data:/data
